@@ -20,7 +20,7 @@ if env_file.exists():
 SECRET_KEY = 'django-insecure-change-me-in-production'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 allowed_hosts = os.getenv(
     'ALLOWED_HOSTS',
