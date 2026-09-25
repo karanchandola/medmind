@@ -22,7 +22,17 @@ SECRET_KEY = 'django-insecure-change-me-in-production'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+allowed_hosts = os.getenv(
+    'ALLOWED_HOSTS',
+    '127.0.0.1,localhost,medmind-xmaj.onrender.com'
+)
+ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(',') if host.strip()]
+
+CSRF_TRUSTED_ORIGINS = [
+    f'https://{host}'
+    for host in ALLOWED_HOSTS
+    if host.endswith('.onrender.com')
+]
 
 
 
